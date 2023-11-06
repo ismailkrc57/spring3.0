@@ -1,0 +1,49 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://<your-host>:<your-port>/<your-database>
+    username: postgres
+    password: 12345
+    driver-class-name: org.postgresql.Driver
+  security:
+    filter:
+      enabled: true
+      whitelist: >
+        /api/v1/auth/**,
+        /api/v1/public/**,
+        /v3/api-docs/**,
+        /swagger-ui/**,
+        /v2/api-docs/**,
+        /swagger-resources/**
+
+
+jwt:
+  secret: 3F4428472B4B6250655368566D5970337336763979244226452948404D635166 # <your-secret>
+  expiration: 86400000 # 1 day
+  refresh:
+    expiration: 604800000 # 7 days
+
+
+cors:
+    allowed-origins: >
+        http://localhost:3000,
+        http://localhost:8080,
+        http://localhost:4200,
+    allowed-methods: "*"
+    allowed-headers: "*"
+    exposed-headers: "Authorization,Link,X-Total-Count"
+    allow-credentials: true
+    max-age: 1800
+
+
+cloudinary:
+  api-key: <your-api-key>
+  api-secret: <your-api-secret>
+  cloud-name: <your-cloud-name>
+
